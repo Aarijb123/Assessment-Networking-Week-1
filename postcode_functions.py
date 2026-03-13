@@ -6,6 +6,7 @@ import json
 
 CACHE_FILE = "./postcode_cache.json"
 
+
 def load_cache() -> dict:
     """Loads the cache from a file and converts it from JSON to a dictionary."""
     # This function is used in Task 3, you can ignore it for now.
@@ -18,9 +19,15 @@ def save_cache(cache: dict):
     ...
 
 
-
 def validate_postcode(postcode: str) -> bool:
-    pass
+    response = req.get(
+        f"https://api.postcodes.io/postcodes/{postcode}/validate")
+
+    data = response.json()
+    if response.status_code == 200:
+        return data
+    else:
+        TypeError("Function expects a string.")
 
 
 def get_postcode_for_location(lat: float, long: float) -> str:
