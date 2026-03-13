@@ -19,14 +19,13 @@ def main():
         else:
             print(f"{postcode} is not a valid postcode.")
 
-    if args.mode == "complete":
+    elif args.mode == "complete":
         completions = get_postcode_completions(postcode)
         if not completions:
             print(f"No matches for {postcode}.")
-            return
-
-        for completion in completions[:5]:
-            print(completion)
+        else:
+            for completion in completions[:5]:
+                print(completion)
 
 
 if __name__ == "__main__":

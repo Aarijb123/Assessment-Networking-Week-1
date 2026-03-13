@@ -72,11 +72,8 @@ def get_postcode_completions(postcode_start: str) -> list[str]:
 
     data = response.json()
     if response.status_code == 200:
-        if data["result"] is None:
-            raise ValueError("No postcode completions found.")
-        return data["result"]
-    else:
-        raise ValueError("No postcode completions found.")
+        return data["result"] or []
+    return []
 
 
 def get_postcodes_details(postcodes: list[str]) -> dict:
