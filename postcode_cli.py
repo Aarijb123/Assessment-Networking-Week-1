@@ -5,7 +5,7 @@ from postcode_functions import validate_postcode, get_postcode_completions
 
 
 def main():
-    parser = argparse.ArgumentParser()
+    parser = ArgumentParser()
     parser.add_argument("--mode", '-m', required=True,
                         choices=["validate", "complete"])
     parser.add_argument("postcode", type=str)
@@ -15,10 +15,19 @@ def main():
 
     if args.mode == "validate":
         if validate_postcode(postcode):
-            print(f"{postcode} is a valid postcode")
+            print(f"{postcode} is a valid postcode.")
         else:
-            print(f"{postcode} is not valid")
+            print(f"{postcode} is not a valid postcode.")
+
+    if args.mode == "complete":
+        completions = get_postcode_completions(postcode)
+        if not completions:
+            print(f"No matches for {postcode}.")
+            return
+
+        for completion in completions[:5]:
+            print(completion)
 
 
 if __name__ == "__main__":
-    pass
+    main()
