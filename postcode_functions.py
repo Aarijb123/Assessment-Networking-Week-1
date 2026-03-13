@@ -24,9 +24,13 @@ def save_cache(cache: dict):
 
 
 def validate_postcode(postcode: str) -> bool:
-
+    """returns a valid postcode"""
     if not isinstance(postcode, str):
         raise TypeError("Function expects a string.")
+
+    cache = load_cache()
+    if postcode in cache and "valid" in cache[postcode]:
+        return cache[postcode]["valid"]
 
     response = req.get(
         f"https://api.postcodes.io/postcodes/{postcode}/validate")
@@ -35,15 +39,18 @@ def validate_postcode(postcode: str) -> bool:
         raise req.RequestException("Unable to access API.")
 
     data = response.json()
+    result = bool(data["result"])
 
-    if response.status_code == 200:
-        return data["result"]
-    else:
-        raise TypeError("Function expects a string.")
+    if postcode not in cache:
+        cache[postcode] = {}
+    cache[postcode]["valid"] = result
+    save_cache(cache)
+
+    return result
 
 
 def get_postcode_for_location(lat: float, long: float) -> str:
-
+    """returns the postcode when we enter the longitude and latitiude"""
     if not isinstance(lat, float) or not isinstance(long, float):
         raise TypeError("Function expects two floats.")
 
@@ -65,8 +72,13 @@ def get_postcode_for_location(lat: float, long: float) -> str:
 
 
 def get_postcode_completions(postcode_start: str) -> list[str]:
+    """returns completed postcode when user inputs start of their postcode"""
     if not isinstance(postcode_start, str):
         raise TypeError("Function expects a string.")
+
+    cache = load_cache()
+    if postcode_start in cache and "completions" in cache[postcode_start]:
+        return cache[postcode_start]["completions"]
 
     response = req.get(
         f"https://api.postcodes.io/postcodes/{postcode_start}/autocomplete")
@@ -75,12 +87,18 @@ def get_postcode_completions(postcode_start: str) -> list[str]:
         raise req.RequestException("Unable to access API.")
 
     data = response.json()
-    if response.status_code == 200:
-        return data["result"] or []
-    return []
+    completions = data.get("result") or []
+
+    if postcode_start not in cache:
+        cache[postcode_start] = {}
+    cache[postcode_start]["completions"] = completions
+    save_cache(cache)
+
+    return completions
 
 
 def get_postcodes_details(postcodes: list[str]) -> dict:
+    """Returns postcode details when we input a list of postcodes"""
     if not isinstance(postcodes, list):
         raise TypeError("Function expects a list of strings.")
 
