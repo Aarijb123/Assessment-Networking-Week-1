@@ -10,13 +10,17 @@ CACHE_FILE = "./postcode_cache.json"
 def load_cache() -> dict:
     """Loads the cache from a file and converts it from JSON to a dictionary."""
     # This function is used in Task 3, you can ignore it for now.
-    ...
+    if not os.path.exists(CACHE_FILE):
+        return {}
+    with open(CACHE_FILE, "r", encoding="utf-8") as f:
+        cache_dict = json.load(f)
+        return cache_dict
 
 
 def save_cache(cache: dict):
     """Saves the cache to a file as JSON"""
-    # This function is used in Task 3, you can ignore it for now.
-    ...
+    with open(CACHE_FILE, "w", encoding="utf-8") as f:
+        json.dump(cache, f, indent=4)
 
 
 def validate_postcode(postcode: str) -> bool:
