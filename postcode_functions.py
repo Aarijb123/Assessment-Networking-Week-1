@@ -39,9 +39,7 @@ def validate_postcode(postcode: str) -> bool:
 
 def get_postcode_for_location(lat: float, long: float) -> str:
 
-    if not isinstance(lat, float):
-        raise TypeError("Function expects two floats.")
-    if not isinstance(long, float):
+    if not isinstance(lat, float) or not isinstance(long, float):
         raise TypeError("Function expects two floats.")
 
     response = req.get(
@@ -51,7 +49,9 @@ def get_postcode_for_location(lat: float, long: float) -> str:
     data = response.json()
 
     if response.status_code == 200:
-        return data["result"]
+        if data["result"] is None:
+            raise ValueError("No relevant postcode found.")
+        return data["result"][0]["postcode"]
     elif response.status_code == 500:
         raise req.RequestException("Unable to access API.")
     else:
