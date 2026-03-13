@@ -1,15 +1,15 @@
 ============================= test session starts ==============================
-platform linux -- Python 3.12.12, pytest-9.0.2, pluggy-1.6.0
+platform linux -- Python 3.12.13, pytest-9.0.2, pluggy-1.6.0
 rootdir: /home/runner/work/Assessment-Networking-Week-1/Assessment-Networking-Week-1
 plugins: requests-mock-1.12.1
 collected 91 items
 
 test_postcode_cache.py FFFFFFFFFFFFF                                     [ 14%]
-test_postcode_cli.py .............F.FFFFFF...........                    [ 49%]
+test_postcode_cli.py .............F..................                    [ 49%]
 test_postcode_functions.py ............................................. [ 98%]
 .                                                                        [100%]
 
-======================== 20 failed, 71 passed in 5.75s =========================
+======================== 14 failed, 77 passed in 5.55s =========================
 ************* Module postcode_cli
 postcode_cli.py:7:0: C0116: Missing function or method docstring (missing-function-docstring)
 ************* Module postcode_functions
@@ -24,15 +24,14 @@ postcode_functions.py:46:15: W3101: Missing timeout argument for method 'req.get
 postcode_functions.py:55:4: R1705: Unnecessary "else" after "return", remove the "else" and de-indent the code inside it (no-else-return)
 postcode_functions.py:63:0: C0116: Missing function or method docstring (missing-function-docstring)
 postcode_functions.py:67:15: W3101: Missing timeout argument for method 'req.get' can cause your program to hang indefinitely (missing-timeout)
-postcode_functions.py:74:4: R1705: Unnecessary "else" after "return", remove the "else" and de-indent the code inside it (no-else-return)
-postcode_functions.py:82:0: C0116: Missing function or method docstring (missing-function-docstring)
-postcode_functions.py:90:15: W3101: Missing timeout argument for method 'req.post' can cause your program to hang indefinitely (missing-timeout)
-postcode_functions.py:98:4: R1705: Unnecessary "else" after "return", remove the "else" and de-indent the code inside it (no-else-return)
+postcode_functions.py:79:0: C0116: Missing function or method docstring (missing-function-docstring)
+postcode_functions.py:87:15: W3101: Missing timeout argument for method 'req.post' can cause your program to hang indefinitely (missing-timeout)
+postcode_functions.py:95:4: R1705: Unnecessary "else" after "return", remove the "else" and de-indent the code inside it (no-else-return)
 postcode_functions.py:4:0: C0411: standard import "os" should be placed before third party import "requests" (wrong-import-order)
 postcode_functions.py:5:0: C0411: standard import "json" should be placed before third party import "requests" (wrong-import-order)
 postcode_functions.py:4:0: W0611: Unused import os (unused-import)
 postcode_functions.py:5:0: W0611: Unused import json (unused-import)
 
 ------------------------------------------------------------------
-Your code has been rated at 7.37/10 (previous run: 7.37/10, +0.00)
+Your code has been rated at 7.40/10 (previous run: 7.40/10, +0.00)
 
