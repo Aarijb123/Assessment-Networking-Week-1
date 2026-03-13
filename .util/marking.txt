@@ -4,29 +4,24 @@ rootdir: /home/runner/work/Assessment-Networking-Week-1/Assessment-Networking-We
 plugins: requests-mock-1.12.1
 collected 90 items
 
-test_postcode_cache.py FFFFFFFFF....                                     [ 14%]
+test_postcode_cache.py .............                                     [ 14%]
 test_postcode_cli.py ...............................                     [ 48%]
 test_postcode_functions.py ............................................. [ 98%]
 .                                                                        [100%]
 
-========================= 9 failed, 81 passed in 6.46s =========================
+============================== 90 passed in 5.43s ==============================
 ************* Module postcode_cli
 postcode_cli.py:7:0: C0116: Missing function or method docstring (missing-function-docstring)
 ************* Module postcode_functions
-postcode_functions.py:26:0: C0116: Missing function or method docstring (missing-function-docstring)
-postcode_functions.py:31:15: W3101: Missing timeout argument for method 'req.get' can cause your program to hang indefinitely (missing-timeout)
-postcode_functions.py:39:4: R1705: Unnecessary "else" after "return", remove the "else" and de-indent the code inside it (no-else-return)
-postcode_functions.py:45:0: C0116: Missing function or method docstring (missing-function-docstring)
-postcode_functions.py:50:15: W3101: Missing timeout argument for method 'req.get' can cause your program to hang indefinitely (missing-timeout)
-postcode_functions.py:59:4: R1705: Unnecessary "else" after "return", remove the "else" and de-indent the code inside it (no-else-return)
-postcode_functions.py:67:0: C0116: Missing function or method docstring (missing-function-docstring)
-postcode_functions.py:71:15: W3101: Missing timeout argument for method 'req.get' can cause your program to hang indefinitely (missing-timeout)
-postcode_functions.py:83:0: C0116: Missing function or method docstring (missing-function-docstring)
-postcode_functions.py:91:15: W3101: Missing timeout argument for method 'req.post' can cause your program to hang indefinitely (missing-timeout)
-postcode_functions.py:99:4: R1705: Unnecessary "else" after "return", remove the "else" and de-indent the code inside it (no-else-return)
+postcode_functions.py:35:15: W3101: Missing timeout argument for method 'req.get' can cause your program to hang indefinitely (missing-timeout)
+postcode_functions.py:57:15: W3101: Missing timeout argument for method 'req.get' can cause your program to hang indefinitely (missing-timeout)
+postcode_functions.py:66:4: R1705: Unnecessary "else" after "return", remove the "else" and de-indent the code inside it (no-else-return)
+postcode_functions.py:83:15: W3101: Missing timeout argument for method 'req.get' can cause your program to hang indefinitely (missing-timeout)
+postcode_functions.py:109:15: W3101: Missing timeout argument for method 'req.post' can cause your program to hang indefinitely (missing-timeout)
+postcode_functions.py:117:4: R1705: Unnecessary "else" after "return", remove the "else" and de-indent the code inside it (no-else-return)
 postcode_functions.py:4:0: C0411: standard import "os" should be placed before third party import "requests" (wrong-import-order)
 postcode_functions.py:5:0: C0411: standard import "json" should be placed before third party import "requests" (wrong-import-order)
 
 ------------------------------------------------------------------
-Your code has been rated at 8.21/10 (previous run: 8.21/10, +0.00)
+Your code has been rated at 9.00/10 (previous run: 9.00/10, +0.00)
 
