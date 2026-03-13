@@ -20,14 +20,21 @@ def save_cache(cache: dict):
 
 
 def validate_postcode(postcode: str) -> bool:
+
+    if not isinstance(postcode, str):
+        raise TypeError(postcode, str)
+
     response = req.get(
         f"https://api.postcodes.io/postcodes/{postcode}/validate")
 
     data = response.json()
+
     if response.status_code == 200:
-        return data
+        return data["result"]
+    elif response.status_code == 500:
+        raise req.RequestException("Unable to access API.")
     else:
-        TypeError("Function expects a string.")
+        raise TypeError("Function expects a string.")
 
 
 def get_postcode_for_location(lat: float, long: float) -> str:
